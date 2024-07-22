@@ -12,20 +12,21 @@ public class QuestoesUtil {
 
     public static void main(String[] args) {
         List<Integer> numbers = new ArrayList<>();
-        numbers.add(64);
-        numbers.add(34);
-        numbers.add(25);
-        numbers.add(12);
-        numbers.add(22);
-        numbers.add(11);
-        numbers.add(90);
+        numbers.add(5);
+        numbers.add(3);
+        numbers.add(2);
+        numbers.add(4);
+        numbers.add(7);
+        numbers.add(1);
+        numbers.add(0);
+        numbers.add(6);
         System.out.println(numbers);
         System.out.println(bubbleSort(numbers));
         System.out.println(fatorial(5));
         System.out.println(votosBrancos());
         System.out.println(votosValidos());
         System.out.println(votosNulos());
-        System.out.println();
+        System.out.println(somaNumeroMutiplode3e5(10));
     }
     public static List<Integer> bubbleSort(List<Integer> numeros){
         int n = numeros.size();
@@ -61,5 +62,22 @@ public class QuestoesUtil {
     }
     public static String calculPercentual(double denominador ,double numerador ){
         return  (numerador / denominador) * 100 + "%";
+    }
+
+    public static Integer somaNumeroMutiplode3e5(Integer numero){
+        int soma =0;
+        for(int i = numero;i>0 ;i--){
+
+            if(multiploDe3(i)|| multiploDe5(i) && i<numero){
+                soma +=i;
+            }
+        }
+        return soma;
+    }
+    public static boolean multiploDe3(Integer numero){
+        return numero % 3 == 0;
+    }
+    public static boolean multiploDe5(Integer numero){
+        return numero % 5 == 0;
     }
 }
