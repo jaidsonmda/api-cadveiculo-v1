@@ -10,18 +10,19 @@ public class VeiculoDTO {
    
 
 
-    @NotNull
+
     public String veiculo;
-    @NotNull
+
     public String marca;
-    @NotNull
+
     public Integer ano;
-    @NotNull
+
     public String descricao;
-    @NotNull
+
     public String cor;
-    @NotNull
+
     public boolean vendido;
+    public LocalDate created ;
     
 
 }

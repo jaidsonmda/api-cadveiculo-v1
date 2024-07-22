@@ -3,6 +3,8 @@ package dev.jaidson.entity;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 
@@ -14,16 +16,22 @@ public class VeiculoEntity extends PanacheEntityBase {
     @GeneratedValue(strategy =GenerationType.SEQUENCE,generator = "veiculos_SEQ")
     private Long id;
 
+    @NotNull @NotBlank
     @Column(name = "veiculo")
     private String veiculo;
+    @NotNull @NotBlank
     @Column(name = "marca")
     private String marca;
+    @NotNull
     @Column(name = "ano" )
     private Integer ano;
+    @NotNull @NotBlank
     @Column(name = "cor")
     private String cor;
+    @NotNull @NotBlank
     @Column(name = "descricao")
     private String descricao;
+    @NotNull
     @Column(name = "vendido")
     private boolean vendido;
     @Column(name = "created")

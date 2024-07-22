@@ -1,0 +1,65 @@
+package dev.jaidson.util;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class QuestoesUtil {
+
+    private static final int ELEITORES = 1000;
+    private static final int VOTOSSVALIDOS = 800;
+    private static final int VOTOSBRANCOS = 150;
+    private static final int VOTOSNULOS = 50;
+
+    public static void main(String[] args) {
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(64);
+        numbers.add(34);
+        numbers.add(25);
+        numbers.add(12);
+        numbers.add(22);
+        numbers.add(11);
+        numbers.add(90);
+        System.out.println(numbers);
+        System.out.println(bubbleSort(numbers));
+        System.out.println(fatorial(5));
+        System.out.println(votosBrancos());
+        System.out.println(votosValidos());
+        System.out.println(votosNulos());
+        System.out.println();
+    }
+    public static List<Integer> bubbleSort(List<Integer> numeros){
+        int n = numeros.size();
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (numeros.get(j) > numeros.get(i)) {
+                    int aux = numeros.get(i);
+                    numeros.set(i, numeros.get(j));
+                    numeros.set(j, aux);
+
+                }
+            }
+        }
+        return numeros;
+    }
+    public static Integer fatorial(int n) {
+       if (n<0){
+           throw new IllegalArgumentException("Não deve ser negativo");
+       }
+        if (n==0) return 1;
+        return n == 1 ? 1 : n * fatorial(n - 1);
+
+
+    }
+    public static String votosValidos(){
+        return calculPercentual(ELEITORES, VOTOSSVALIDOS);
+    }
+    public static String votosBrancos(){
+        return calculPercentual(ELEITORES, VOTOSBRANCOS);
+    }
+    public static String votosNulos(){
+        return calculPercentual(ELEITORES, VOTOSNULOS);
+    }
+    public static String calculPercentual(double denominador ,double numerador ){
+        return  (numerador / denominador) * 100 + "%";
+    }
+}

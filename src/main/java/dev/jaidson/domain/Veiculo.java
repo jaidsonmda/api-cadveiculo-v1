@@ -13,11 +13,12 @@ public class Veiculo {
     public String marca;
 
     public Integer ano;
-    @NotNull
+
     public String cor;
 
     public String descricao;
-
+    public LocalDate created ;
+    public LocalDate updated ;
     public boolean vendido;
 
 

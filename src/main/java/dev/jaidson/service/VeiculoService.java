@@ -6,6 +6,7 @@ import dev.jaidson.repository.VeiculoRepository;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 
 import java.util.List;
 
@@ -21,27 +22,32 @@ public class VeiculoService {
         return veiculoRepository.findAll();
     }
 
-    public List<VeiculoEntity> buscarVeiculos(String marca, Integer ano, String cor) {
-        return veiculoRepository.findAll(marca,ano,cor);
+    public List<VeiculoEntity> buscarVeiculosComParametros(String marca, Integer ano, String cor) {
+        return veiculoRepository.findVeiculoComParametros(marca,ano,cor);
     }
 
     public VeiculoEntity buscarVeiculo(Integer id) {
         return veiculoRepository.findById(id);
     }
 
+    @Transactional
     public VeiculoEntity adicionarVeiculo(VeiculoDTO dto) {
         VeiculoEntity veiculoEntity = dtoToEntity(dto);
        return veiculoRepository.create(veiculoEntity);
     }
 
-
+    @Transactional
     public VeiculoEntity atualizarVeiculo(VeiculoDTO dto, Long id) {
         VeiculoEntity veiculoEntity = dtoToEntity(dto);
         veiculoEntity.setId(id);
-        return veiculoRepository.update(veiculoEntity);
+        return veiculoRepository.update(dto,id);
     }
-
-    public VeiculoEntity venderVeiculo(Long id) {
+    @Transactional
+    public VeiculoEntity venderVeiculo(VeiculoDTO dto,Long id) {
         return veiculoRepository.updateVenda(id);
+    }
+    @Transactional
+    public void excluiVeiculo(Long id) {
+     veiculoRepository.delete(id);
     }
 }
