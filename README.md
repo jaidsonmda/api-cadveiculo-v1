@@ -1,5 +1,14 @@
 # api-cadveiculo-v1
 
+Subir a infra
+```shell script
+sudo docker compose up
+```
+Excluir infra
+```shell script
+sudo docker compose down --rmi all --volumes --remove-orphans
+```
+
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.

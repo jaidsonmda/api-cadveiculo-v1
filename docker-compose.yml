@@ -1,0 +1,23 @@
+
+
+  services:
+    postgres:
+      image: postgres
+      container_name: postgres_container
+      environment:
+        POSTGRES_USER: teste        # Substitua pelo nome de usuário desejado
+        POSTGRES_PASSWORD: teste # Substitua pela senha desejada
+        POSTGRES_DB: teste     # Substitua pelo nome do banco de dados
+      ports:
+        - "5432:5432"  # Porta padrão do PostgreSQL
+      volumes:
+        - pgdata:/var/lib/postgresql/data  # Volume para persistência dos dados
+        - ./entrypoint.sh:/docker-entrypoint-initdb.d/entrypoint.sh
+      restart: always
+    adminer:
+      image: adminer
+      restart: always
+      ports:
+      - "8085:8085"
+  volumes:
+    pgdata:
