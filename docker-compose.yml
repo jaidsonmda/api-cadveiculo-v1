@@ -19,5 +19,19 @@
       restart: always
       ports:
       - "8085:8085"
+    keycloak:
+      image: quay.io/keycloak/keycloak:25.0.6
+      container_name: keycloak
+      environment:
+        - KEYCLOAK_ADMIN=admin
+        - KEYCLOAK_ADMIN_PASSWORD=admin
+      ports:
+        - "8080:8080"
+      volumes:
+        - ./keycloak-keystore.jks:/etc/keycloak-keystore.jks
+      command:
+        - start-dev
+        - --hostname-strict=false
+        - --https-key-store-file=/etc/keycloak-keystore.jks
   volumes:
     pgdata:
