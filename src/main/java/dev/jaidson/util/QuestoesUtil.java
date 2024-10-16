@@ -27,6 +27,7 @@ public class QuestoesUtil {
         System.out.println(votosValidos());
         System.out.println(votosNulos());
         System.out.println(somaNumeroMutiplode3e5(10));
+        System.out.printf("'%S' %n","teste");
     }
     public static List<Integer> bubbleSort(List<Integer> numeros){
         int n = numeros.size();
@@ -36,7 +37,7 @@ public class QuestoesUtil {
                     int aux = numeros.get(i);
                     numeros.set(i, numeros.get(j));
                     numeros.set(j, aux);
-
+                    ++i;
                 }
             }
         }
@@ -67,8 +68,7 @@ public class QuestoesUtil {
     public static Integer somaNumeroMutiplode3e5(Integer numero){
         int soma =0;
         for(int i = numero;i>0 ;i--){
-
-            if(multiploDe3(i)|| multiploDe5(i) && i<numero){
+            if(multiploDe3(i) || multiploDe5(i) && i<numero){
                 soma +=i;
             }
         }
